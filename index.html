@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary to Text Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Binary to Text Converter</h1>
+    <textarea id="binaryInput" placeholder="Enter binary here (e.g., 01001000 01001001)"></textarea>
+    <button onclick="convertBinaryToText()">Convert</button>
+    <div class="output" id="textOutput"></div>
+
+    <script>
+        function convertBinaryToText() {
+            const binaryInput = document.getElementById('binaryInput').value;
+            const binaryArray = binaryInput.split(' ');
+            let textOutput = '';
+
+            binaryArray.forEach(binary => {
+                const charCode = parseInt(binary, 2);
+                if (!isNaN(charCode)) {
+                    textOutput += String.fromCharCode(charCode);
+                }
+            });
+
+            document.getElementById('textOutput').innerText = textOutput || 'Invalid binary input!';
+        }
+    </script>
+</body>
+</html>
